@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Célula</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Jogo da Célula</h1>
+
+    <div id="status">
+        <div id="vidaContainer">
+            <span>Vida:</span>
+            <div id="vidaBarContainer">
+                <div id="vidaBar"></div>
+            </div>
+        </div>
+        <p>ATP: <span id="atp"></span></p>
+        <p>Metabólitos: <span id="metabolitos"></span></p>
+        <p>Glicose: <span id="glicose"></span></p>
+        <p>Turno: <span id="turno"></span></p>
+    </div>
+
+    <div id="celulaContainer">
+        <div id="imagemCelula">
+            <div id="conteudoCelula"></div>
+            <div id="nucleo"></div>
+            <div id="imagemMitocondria"></div>
+        </div>
+    </div>
+
+    <div id="botoes-wrapper">
+        <div id="botoes">
+            <button onclick="fermentacao()">Fermentação</button>
+            <button onclick="respiracao()">Respiração</button>
+            <button onclick="sinteseProteica()">Síntese Proteica</button>
+            <button onclick="lisossomo()">Lisossomo</button>
+            <button onclick="canalGlicose()">Canal de Glicose</button>
+        </div>
+    </div>
+
+    <div id="tooltip" class="hidden">
+        <img id="tooltipImage" src="" alt="Info">
+        <p id="tooltipText"></p>
+    </div>
+
+<div id="gameOverScreen" class="hidden">
+    <div id="gameOverContent">
+        <h2>Game Over!</h2>
+        <p>Sua célula não resistiu...</p>
+        <button onclick="reiniciarJogo()">Reiniciar</button>
+    </div>
+</div>
+
+    <script src="logic.js"></script>
+</body>
+
+</html>
