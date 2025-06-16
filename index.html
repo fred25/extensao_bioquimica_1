@@ -2,59 +2,54 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jogo da Célula</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #fce4ec);
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #2e7d32;
+            margin-bottom: 60px;
+        }
+
+        .botao-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .botao {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #81c784;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .botao:hover {
+            background-color: #4caf50;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Jogo da Célula</h1>
-
-    <div id="status">
-        <div id="vidaContainer">
-            <span>Vida:</span>
-            <div id="vidaBarContainer">
-                <div id="vidaBar"></div>
-            </div>
-        </div>
-        <p>ATP: <span id="atp"></span></p>
-        <p>Metabólitos: <span id="metabolitos"></span></p>
-        <p>Glicose: <span id="glicose"></span></p>
-        <p>Turno: <span id="turno"></span></p>
+    <h1>🌿 Jogo da Célula 🌿</h1>
+    <div class="botao-container">
+        <button class="botao" onclick="window.location.href='jogo.html'">Iniciar Jogo</button>
+        <button class="botao" onclick="window.location.href='guia.html'">Guia & Explicações</button>
+        <button class="botao" onclick="window.location.href='creditos.html'">Créditos</button>
     </div>
-
-    <div id="celulaContainer">
-        <div id="imagemCelula">
-            <div id="conteudoCelula"></div>
-            <div id="nucleo"></div>
-            <div id="imagemMitocondria"></div>
-        </div>
-    </div>
-
-    <div id="botoes-wrapper">
-        <div id="botoes">
-            <button onclick="fermentacao()">Fermentação</button>
-            <button onclick="respiracao()">Respiração</button>
-            <button onclick="sinteseProteica()">Síntese Proteica</button>
-            <button onclick="lisossomo()">Lisossomo</button>
-            <button onclick="canalGlicose()">Canal de Glicose</button>
-        </div>
-    </div>
-
-    <div id="tooltip" class="hidden">
-        <img id="tooltipImage" src="" alt="Info">
-        <p id="tooltipText"></p>
-    </div>
-
-<div id="gameOverScreen" class="hidden">
-    <div id="gameOverContent">
-        <h2>Game Over!</h2>
-        <p>Sua célula não resistiu...</p>
-        <button onclick="reiniciarJogo()">Reiniciar</button>
-    </div>
-</div>
-
-    <script src="logic.js"></script>
 </body>
 
 </html>

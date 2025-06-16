@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guia do Jogo da Célula</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #fce4ec, #e0f7fa);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #388e3c;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .voltar {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .voltar button {
+            padding: 10px 25px;
+            font-size: 1em;
+            background-color: #81c784;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .voltar button:hover {
+            background-color: #4caf50;
+        }
+
+        .bloco {
+            margin-bottom: 30px;
+            border-left: 4px solid #aed581;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Guia do Jogo da Célula</h1>
+
+    <div class="bloco">
+        <h2>ATP</h2>
+        <p><strong>Biologicamente:</strong> É a "moeda energética" da célula, usada em praticamente todas as reações
+            celulares que exigem energia.</p>
+        <p><strong>No jogo:</strong> Usado para realizar ações como síntese proteica e limpeza com o lisossomo. Pode ser
+            gerado por fermentação ou respiração celular.</p>
+    </div>
+
+    <div class="bloco">
+        <h2>Glicose</h2>
+        <p><strong>Biologicamente:</strong> Principal fonte de energia da célula, metabolizada via fermentação ou
+            respiração.</p>
+        <p><strong>No jogo:</strong> Usada como combustível para gerar ATP. Pode ser obtida clicando no "Canal de
+            Glicose".</p>
+    </div>
+
+    <div class="bloco">
+        <h2>Metabólitos</h2>
+        <p><strong>Biologicamente:</strong> Subprodutos do metabolismo celular. Se acumularem, tornam-se tóxicos.</p>
+        <p><strong>No jogo:</strong> Reduzem a vida da célula a cada turno. Podem ser eliminados com o Lisossomo.</p>
+    </div>
+
+    <div class="bloco">
+        <h2>Vida</h2>
+        <p><strong>Biologicamente:</strong> Representa o estado de saúde da célula.</p>
+        <p><strong>No jogo:</strong> Vai diminuindo com o acúmulo de metabólitos. Pode ser restaurada com síntese
+            proteica. Se chegar a 0, o jogo acaba.</p>
+    </div>
+
+    <div class="bloco">
+        <h2>Síntese Proteica (Núcleo)</h2>
+        <p><strong>Biologicamente:</strong> Processo de construção de proteínas essenciais para a célula.</p>
+        <p><strong>No jogo:</strong> Recupera a vida da célula usando ATP. É uma ação estratégica para se manter vivo.
+        </p>
+    </div>
+
+    <div class="bloco">
+        <h2>Lisossomo</h2>
+        <p><strong>Biologicamente:</strong> Organelas responsáveis por eliminar resíduos e substâncias tóxicas.</p>
+        <p><strong>No jogo:</strong> Usa ATP para remover metabólitos acumulados. Ajuda a preservar a vida da célula.
+        </p>
+    </div>
+
+    <div class="bloco">
+        <h2>Fermentação</h2>
+        <p><strong>Biologicamente:</strong> Processo anaeróbico de obtenção de energia, menos eficiente que a
+            respiração.</p>
+        <p><strong>No jogo:</strong> Gera pouco ATP, mas rápido. Aumenta os metabólitos e consome glicose.</p>
+    </div>
+
+    <div class="bloco">
+        <h2>Respiração Celular</h2>
+        <p><strong>Biologicamente:</strong> Processo em etapas (Glicólise, Ciclo de Krebs, Fosforilação Oxidativa) que
+            gera grande quantidade de ATP com oxigênio.</p>
+        <p><strong>No jogo:</strong> Ao longo de 3 turnos, transforma glicose em muito ATP, mas também gera metabólitos.
+        </p>
+    </div>
+
+    <div class="bloco">
+        <h2>Turnos</h2>
+        <p><strong>Biologicamente:</strong> Representam o passar do tempo e dos processos celulares contínuos.</p>
+        <p><strong>No jogo:</strong> Cada ação avança um turno. A cada turno, a célula sofre os efeitos do acúmulo de
+            metabólitos.</p>
+    </div>
+
+    <div class="voltar">
+        <button onclick="window.location.href='index.html'">← Voltar ao Início</button>
+    </div>
+</body>
+
+</html>

@@ -47,8 +47,30 @@ function atualizarInterface() {
     document.getElementById("metabolitos").innerText = metabolitos;
     document.getElementById("glicose").innerText = glicose;
     document.getElementById("turno").innerText = turno;
+
     const vidaPercent = Math.max(vida, 0);
-    document.getElementById("vidaBar").style.width = vidaPercent + "%";
+    const barraVida = document.getElementById("vidaBar");
+    barraVida.style.width = vidaPercent + "%";
+
+    // Atualizar cor da barra de vida com gradiente verde → amarelo → vermelho
+    const percent = vidaPercent / 100;
+    let r, g, b;
+
+    if (percent > 0.5) {
+        // De verde até amarelo
+        const factor = (1 - percent) * 2;
+        r = Math.floor(255 * factor);
+        g = 255;
+        b = 0;
+    } else {
+        // De amarelo até vermelho
+        const factor = percent * 2;
+        r = 255;
+        g = Math.floor(255 * factor);
+        b = 0;
+    }
+
+    barraVida.style.backgroundColor = `rgb(${r},${g},${b})`;
 
     const area = document.getElementById("conteudoCelula");
     area.innerHTML = "";
@@ -67,6 +89,8 @@ function atualizarInterface() {
     const nucleo = document.getElementById("nucleo");
     nucleo.onmousemove = (e) => mostrarTooltip(e, "nucleo");
     nucleo.onmouseleave = esconderTooltip;
+
+    gerarFormaCelularAleatoria();
 }
 
 function criarBolinha(tipo) {
@@ -93,52 +117,51 @@ function mostrarTooltip(event, tipo) {
     const tooltip = document.getElementById("tooltip");
     const texto = document.getElementById("tooltipText");
     const imagem = document.getElementById("tooltipImage");
-  
+
     if (tipo === "mitocondria") {
-      texto.innerText = descricoes.mitocondria[respiracaoEtapa].texto;
-      imagem.src = descricoes.mitocondria[respiracaoEtapa].imagem;
+        texto.innerText = descricoes.mitocondria[respiracaoEtapa].texto;
+        imagem.src = descricoes.mitocondria[respiracaoEtapa].imagem;
     } else {
-      texto.innerText = descricoes[tipo].texto;
-      imagem.src = descricoes[tipo].imagem;
+        texto.innerText = descricoes[tipo].texto;
+        imagem.src = descricoes[tipo].imagem;
     }
-  
+
     tooltip.style.opacity = "0";
-    tooltip.style.display = "block";  // mostra para medir
-  
+    tooltip.style.display = "block";
+
     const tooltipRect = tooltip.getBoundingClientRect();
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
-  
+
     let left = event.pageX + 10;
     let top = event.pageY + 10;
-  
+
     if (left + tooltipRect.width > windowWidth) {
-      left = windowWidth - tooltipRect.width - 10;
+        left = windowWidth - tooltipRect.width - 10;
     }
     if (top + tooltipRect.height > windowHeight) {
-      top = windowHeight - tooltipRect.height - 10;
+        top = windowHeight - tooltipRect.height - 10;
     }
     if (left < 10) left = 10;
     if (top < 10) top = 10;
-  
+
     tooltip.style.left = left + "px";
     tooltip.style.top = top + "px";
-  
     tooltip.style.opacity = "1";
-  }
-  
-  function esconderTooltip() {
+}
+
+function esconderTooltip() {
     const tooltip = document.getElementById("tooltip");
     tooltip.style.opacity = "0";
-    // deixa fora da tela para não atrapalhar interações
     tooltip.style.left = "-9999px";
     tooltip.style.top = "-9999px";
     tooltip.style.display = "none";
-  }
+}
 
-  function proximoTurno() {
+function proximoTurno() {
     turno++;
     vida -= (10 / 3) * metabolitos + 1;
+    metabolitos++;
     verificarGameOver();
     if (respiracaoEtapa > 0) {
         respiracaoEtapa++;
@@ -149,7 +172,6 @@ function mostrarTooltip(event, tipo) {
         }
     }
 
-    // Faz a célula tremer no início do turno
     const celula = document.getElementById("imagemCelula");
     celula.classList.add("tremer");
     setTimeout(() => {
@@ -158,7 +180,6 @@ function mostrarTooltip(event, tipo) {
 
     atualizarInterface();
 }
-
 
 function fermentacao() {
     if (glicose >= 1) {
@@ -220,6 +241,18 @@ function reiniciarJogo() {
     gameOver.classList.add("hidden");
 }
 
-    
+function gerarFormaCelularAleatoria() {
+    // Função para criar 8 valores entre 35% e 65%, garantindo formas naturais
+    const valores = [];
+    for (let i = 0; i < 8; i++) {
+        valores.push((35 + Math.random() * 30).toFixed(0) + "%");
+    }
+
+    // Formatar: primeiros 4 para horizontal, últimos 4 para vertical
+    const borderRadiusValue = `${valores.slice(0, 4).join(" ")} / ${valores.slice(4, 8).join(" ")}`;
+
+    const celula = document.getElementById("imagemCelula");
+    celula.style.borderRadius = borderRadiusValue;
+}
 
 atualizarInterface();

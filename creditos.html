@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créditos - Jogo da Célula</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #fff3e0, #e1f5fe);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0288d1;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+        }
+
+        .criador {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f1f8e9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 220px;
+        }
+
+        .criador img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid #81c784;
+        }
+
+        .criador p {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .voltar {
+            margin-top: 40px;
+        }
+
+        .voltar button {
+            padding: 10px 25px;
+            font-size: 1em;
+            background-color: #4fc3f7;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .voltar button:hover {
+            background-color: #0288d1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Créditos</h1>
+
+    <div class="criador">
+        <img src="images/frederico.jpg" alt="Foto de Frederico Kraemer Mattos">
+        <p>Frederico Kraemer Mattos</p>
+    </div>
+
+    <div class="criador">
+        <img src="images/igor.png" alt="Foto de Igor Ritzel Pacheco">
+        <p>Igor Ritzel Pacheco</p>
+    </div>
+
+    <div class="criador">
+        <img src="images/lucas.jpeg" alt="Foto de Lucas Pacheco Wisnieswski">
+        <p>Lucas Pacheco Wisnieswski</p>
+    </div>
+
+    <div class="voltar">
+        <button onclick="window.location.href='index.html'">← Voltar ao Início</button>
+    </div>
+</body>
+
+</html>
