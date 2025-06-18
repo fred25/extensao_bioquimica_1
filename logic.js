@@ -48,6 +48,18 @@ function atualizarInterface() {
     document.getElementById("glicose").innerText = glicose;
     document.getElementById("turno").innerText = turno;
 
+    if (turno < 10) {
+        document.getElementById("btn_resp").hidden = true;
+        document.getElementById("nucleo").hidden = true;
+        document.getElementById("imagemMitocondria").hidden = true;
+        document.getElementById("nomeCelula").innerText = "Procarionte";
+    } else{
+        document.getElementById("btn_resp").hidden = false;
+        document.getElementById("nucleo").hidden = false;
+        document.getElementById("imagemMitocondria").hidden = false;
+        document.getElementById("nomeCelula").innerText = "Eucarionte";
+    }
+
     const vidaPercent = Math.max(vida, 0);
     const barraVida = document.getElementById("vidaBar");
     barraVida.style.width = vidaPercent + "%";
@@ -161,7 +173,6 @@ function esconderTooltip() {
 function proximoTurno() {
     turno++;
     vida -= (10 / 3) * metabolitos + 1;
-    metabolitos++;
     verificarGameOver();
     if (respiracaoEtapa > 0) {
         respiracaoEtapa++;
@@ -170,6 +181,13 @@ function proximoTurno() {
             metabolitos += 4;
             respiracaoEtapa = 0;
         }
+    }
+
+    if (turno === 10) {
+        alertar("Evolução para Eucarionte", "A célula evoluiu para um eucarionte! Agora você pode realizar respiração celular");
+        document.getElementById("btn_resp").hidden = false;
+        document.getElementById("nucleo").hidden = false;
+        document.getElementById("imagemMitocondria").hidden = false;
     }
 
     const celula = document.getElementById("imagemCelula");
@@ -187,6 +205,8 @@ function fermentacao() {
         atp += 2;
         metabolitos += 2;
         proximoTurno();
+    } else{
+        alertar("Cuidado!", "Não há glicose suficiente para a fermentação!");
     }
 }
 
@@ -195,15 +215,21 @@ function respiracao() {
         glicose--;
         respiracaoEtapa = 1;
         proximoTurno();
+    } else if (respiracaoEtapa != 0) {
+        alert("Cuidado!", "A respiração celular já está em andamento!");
+    } else{
+        alertar("Cuidado!", "Não há glicose suficiente para a respiração celular!");
     }
 }
 
 function sinteseProteica() {
-    if (atp >= 5) {
-        atp -= 5;
+    if (atp >= 2) {
+        atp -= 2;
         vida += 20;
         if (vida > 100) vida = 100;
         proximoTurno();
+    }else{
+        alertar("Cuidado", "ATP insuficiente para síntese proteica!");
     }
 }
 
@@ -212,6 +238,8 @@ function lisossomo() {
         atp -= 3;
         metabolitos = Math.max(0, metabolitos - 3);
         proximoTurno();
+    } else{
+        alertar("Cuidado!", "ATP insuficiente ou nenhum metabolito para o lisossomo!");
     }
 }
 
@@ -254,5 +282,14 @@ function gerarFormaCelularAleatoria() {
     const celula = document.getElementById("imagemCelula");
     celula.style.borderRadius = borderRadiusValue;
 }
+
+function alertar(titulo, message) {
+    document.getElementById('alertMessage').textContent = message;
+    document.getElementById("alertTitle").textContent = titulo;
+    document.getElementById('customAlert').style.display = 'flex';
+  }
+  function fecharAlerta() {
+    document.getElementById('customAlert').style.display = 'none';
+  }
 
 atualizarInterface();

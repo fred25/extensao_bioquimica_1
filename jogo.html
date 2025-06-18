@@ -30,12 +30,13 @@
             <div id="nucleo"></div>
             <div id="imagemMitocondria"></div>
         </div>
+        <p id="nomeCelula"></p>
     </div>
 
     <div id="botoes-wrapper">
         <div id="botoes">
             <button onclick="fermentacao()">Fermentação</button>
-            <button onclick="respiracao()">Respiração</button>
+            <button id="btn_resp" onclick="respiracao()">Respiração</button>
             <button onclick="sinteseProteica()">Síntese Proteica</button>
             <button onclick="lisossomo()">Lisossomo</button>
             <button onclick="canalGlicose()">Canal de Glicose</button>
@@ -56,6 +57,13 @@
 </div>
 </div>
 
+<div class="modal-backdrop" id="customAlert">
+    <div class="modal">
+        <h2 id="alertTitle"></h2>
+        <div id="alertMessage"></div>
+        <button onclick="fecharAlerta()">OK</button>
+    </div>
+    </div>
     <script src="logic.js"></script>
 </body>
 
