@@ -35,11 +35,11 @@
 
     <div id="botoes-wrapper">
         <div id="botoes">
-            <button onclick="fermentacao()">Fermentação</button>
-            <button id="btn_resp" onclick="respiracao()">Respiração</button>
-            <button onclick="sinteseProteica()">Síntese Proteica</button>
-            <button onclick="lisossomo()">Lisossomo</button>
-            <button onclick="canalGlicose()">Canal de Glicose</button>
+            <button onclick="fermentacao()" title="-1 Gli, +2 ATP + 2 metabólitos">Fermentação</button>
+            <button id="btn_resp" title="Depois de 3 turnos: -1 Gli, +30 ATP, +4 metabólitos" onclick="respiracao()">Respiração</button>
+            <button title="-2 ATP +20% Vida" onclick="sinteseProteica()">Síntese Proteica</button>
+            <button title="-2 ATP -3 metabólitos" onclick="lisossomo()">Transporte Ativo</button>
+            <button title="+1 Gli" onclick="canalGlicose()">Canal de Glicose</button>
         </div>
     </div>
 

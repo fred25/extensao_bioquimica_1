@@ -11,7 +11,7 @@ const descricoes = {
         imagem: "images/atp.png"
     },
     metabolito: {
-        texto: "Metabólitos são produtos residuais do metabolismo. Se acumulados, podem ser tóxicos e prejudicar a célula.",
+        texto: "Metabólitos são produtos residuais do metabolismo. Se acumulados, podem ser tóxicos e prejudicar a célula. No caso da fermentação lática é o ácido lático e na respiração celular é o gás carbônico (CO2)",
         imagem: "images/metabolito.png"
     },
     glicose: {
@@ -172,7 +172,7 @@ function esconderTooltip() {
 
 function proximoTurno() {
     turno++;
-    vida -= (10 / 3) * metabolitos + 1;
+    vida -= (10 / 4) * metabolitos + 1;
     verificarGameOver();
     if (respiracaoEtapa > 0) {
         respiracaoEtapa++;
@@ -188,6 +188,10 @@ function proximoTurno() {
         document.getElementById("btn_resp").hidden = false;
         document.getElementById("nucleo").hidden = false;
         document.getElementById("imagemMitocondria").hidden = false;
+    }
+
+    if (atp === 0) {
+        metabolitos += 1;
     }
 
     const celula = document.getElementById("imagemCelula");
@@ -216,7 +220,7 @@ function respiracao() {
         respiracaoEtapa = 1;
         proximoTurno();
     } else if (respiracaoEtapa != 0) {
-        alert("Cuidado!", "A respiração celular já está em andamento!");
+        alertar("Cuidado!", "A respiração celular já está em andamento!");
     } else{
         alertar("Cuidado!", "Não há glicose suficiente para a respiração celular!");
     }
@@ -234,12 +238,12 @@ function sinteseProteica() {
 }
 
 function lisossomo() {
-    if (atp >= 3 && metabolitos > 0) {
-        atp -= 3;
+    if (atp >= 2 && metabolitos > 0) {
+        atp -= 2;
         metabolitos = Math.max(0, metabolitos - 3);
         proximoTurno();
     } else{
-        alertar("Cuidado!", "ATP insuficiente ou nenhum metabolito para o lisossomo!");
+        alertar("Cuidado!", "ATP insuficiente ou nenhum metabolito para o o transporte ativo!");
     }
 }
 
